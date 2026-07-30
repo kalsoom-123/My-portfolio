@@ -1,32 +1,34 @@
-import { FaSun, FaMoon } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import logoLight from "../assets/logo light.png";
-import logoDark from "../assets/logo dark.png";
+import { useState } from "react";
+import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
+
+const links = ["About", "Services", "Work", "Experience", "Contact"];
 
 function Navbar({ darkMode, setDarkMode }) {
+  const [open, setOpen] = useState(false);
+  const goTo = (id) => {
+    setOpen(false);
+    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <nav className="navbar">
-      <div className="logo">
-  <img src={darkMode ? logoDark : logoLight} alt="logo" />
-</div>
-
-      <div className="nav-links">
-        {/* <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/projects">Projects</Link>
-        <Link to="/contact">Contact</Link> */}
-
-        {/* ✅ NEW TOGGLE BUTTON */}
-        <button
-  onClick={() => setDarkMode(!darkMode)}
-  className={`toggle-switch ${darkMode ? "active" : ""}`}
->
-  <div className="switch-circle">
-    {darkMode ? <FaMoon /> : <FaSun />}
-  </div>
-</button>
-      </div>
-    </nav>
+    <header className="site-header">
+      <nav className="navbar container" aria-label="Main navigation">
+        <button className="brand" onClick={() => goTo("home")} aria-label="Go to home">
+          <span className="brand-mark">K.</span><span>Kalsoom Akhtar</span>
+        </button>
+        <div className={`nav-menu ${open ? "is-open" : ""}`}>
+          {links.map((link) => <button key={link} onClick={() => goTo(link)}>{link}</button>)}
+        </div>
+        <div className="nav-actions">
+          <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)} aria-label="Toggle colour theme">
+            {darkMode ? <FaSun /> : <FaMoon />}
+          </button>
+          <button className="menu-toggle" onClick={() => setOpen(!open)} aria-label="Toggle navigation">
+            {open ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+      </nav>
+    </header>
   );
 }
 

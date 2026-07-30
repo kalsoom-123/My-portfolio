@@ -1,395 +1,49 @@
-import heroVideo from "../assets/hero-bg.mp4";
 import techImg from "../assets/imgggg.png";
-import { FaCode } from "react-icons/fa";
-import { FaHtml5, FaCss3Alt, FaReact, FaWordpress, FaShopify } from "react-icons/fa"
-import { SiJavascript } from "react-icons/si"
-// import emailjs from "@emailjs/browser";
+import { FaArrowDown, FaExternalLinkAlt, FaCode, FaHtml5, FaCss3Alt, FaReact, FaWordpress, FaShopify, FaWhatsapp } from "react-icons/fa";
+import { SiJavascript, SiTailwindcss, SiNextdotjs } from "react-icons/si";
+
+const skills = [{name:"HTML5",icon:<FaHtml5/>},{name:"CSS3",icon:<FaCss3Alt/>},{name:"JavaScript",icon:<SiJavascript/>},{name:"React",icon:<FaReact/>},{name:"Next.js",icon:<SiNextdotjs/>},{name:"WordPress",icon:<FaWordpress/>},{name:"Shopify",icon:<FaShopify/>},{name:"Tailwind",icon:<SiTailwindcss/>}];
+const projects = [
+  ["Crazy Cones", "E-commerce", "A playful, conversion-led ice cream store with a smooth browsing experience.", "https://crazycones.dk/"],
+  ["Smile Shift", "Service website", "A reassuring and easy-to-navigate web presence for a moving company.", "https://smileshiftrelocations.com/"],
+  ["SMMotocross", "Community", "A bold, energetic destination for a motocross team and its events.", "https://smmotocross.com/"],
+  ["Educatia", "Education", "A clear online learning platform designed to make courses approachable.", "https://educatia.pk/"],
+  ["Eagale Soft", "Technology", "A polished company website communicating digital services and expertise.", "https://eagale.com/"],
+  ["Lones Bonsai", "Shopify", "A calm, refined storefront for discovering and buying bonsai plants.", "https://lonesbonsai.com/"],
+];
+const experience = [["Eagale Soft", "React, Shopify & WordPress Developer", "2025 — Present", "Building scalable storefronts and modern frontends with a focus on user experience."],["Technical Mentors", "Frontend Developer", "2024 — 2025", "Delivered responsive client websites and improved performance across projects."],["Technical Mentors", "WordPress Developer", "2023 — 2024", "Customised themes, integrated plugins, and built practical business sites."]];
+
+function SectionHeading({eyebrow, title, copy}) { return <div className="section-heading"><span>{eyebrow}</span><h2>{title}</h2>{copy && <p>{copy}</p>}</div>; }
+
 function Home() {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const message = e.target.message.value;
-
-    const phoneNumber = "923397112244";
-
-    const text = `Hello! New Message:%0A
-Name: ${name}%0A
-Email: ${email}%0A
-Message: ${message}`;
-
-    window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
-
-    e.target.reset();
-  };
-
-
-  const skills = [
-    { name: "HTML", icon: <FaHtml5 color="#E34F26" /> },
-    { name: "CSS", icon: <FaCss3Alt color="#1572B6" /> },
-    { name: "JavaScript", icon: <SiJavascript color="#F7DF1E" /> },
-    { name: "React", icon: <FaReact color="#61DAFB" /> },
-    { name: "WordPress", icon: <FaWordpress color="#21759B" /> },
-    { name: "Shopify", icon: <FaShopify color="#96BF48" /> },
-  ]
-  return (
-    <>
-      {/* HERO (FULL WIDTH) */}
-      <section className="hero hero-video">
-        <video className="hero-video-bg" autoPlay loop muted playsInline>
-          <source src={heroVideo} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
-        <div className="hero-left full-width">
-          <h1>
-            Hi, I'm <span className="gradient-text">Kalsoom</span> 👩‍💻
-          </h1>
-
-          <h2 className="sub-heading">
-            Frontend • WordPress • Shopify Developer
-          </h2>
-
-          <p className="hero-desc">
-            I craft modern, high-performance websites with clean UI, smooth UX,
-            and scalable solutions for businesses and brands.
-          </p>
-
-          <div className="hero-buttons">
-            <button className="btn-primary" onClick={scrollToContact}>
-              Hire Me
-            </button>
-
-            <button className="btn-primary">
-              {/* View Projects */}
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* PAGE CONTENT INSIDE CONTAINER */}
-      <div className="container">
-
-<section className="about modern-section">
-  <h2 className="section-title" data-aos="fade-up">
-    <span className="line"></span>
-    <span className="dot"></span>
-    About Me
-    <span className="dot"></span>
-    <span className="line"></span>
-  </h2>
-  <p>Who I am & what I do</p>
-
-  <div className="about-content">
-    {/* Text side */}
-    <div className="about-text">
-      <p>
-        I'm a <strong>Frontend Developer</strong> passionate about building sleek and responsive websites.
-        I specialize in <strong>React, WordPress, Shopify, and modern JavaScript</strong> technologies.
-      </p>
-      <p>
-        With over <strong>2 years of experience</strong>, I create fast, scalable, and user-focused web solutions 
-        that help brands achieve their online goals. I love turning complex problems into simple, 
-        beautiful interfaces.
-      </p>
-      <p>
-        My toolbox includes <strong>React, HTML5, CSS3, JavaScript, Tailwind, Bootstrap, Git, and Shopify</strong>. 
-        I'm always learning new technologies and improving my workflow to deliver the best results.
-      </p>
-      <a href="#contact" className="btn-primary">Hire Me</a>
-    </div>
-
-    {/* Tech image side */}
-    <div className="about-image">
-      <img src={techImg} alt="Tech Stack" />
-    </div>
-  </div>
-</section>
-
-        {/* SKILLS */}
-        <section className="skills">
-          <h2 className="section-title" data-aos="fade-up">
-  <span className="line"></span>
-  <span className="dot"></span>
-  My Skills
-  <span className="dot"></span>
-  <span className="line"></span>
-</h2>
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <div key={index} className="skill-card">
-                <div className="skill-icon">{skill.icon}</div>
-                <span>{skill.name}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SERVICES */}
-<section className="services modern-section">
-  <h2 className="section-title" data-aos="fade-up">
-    <span className="line"></span>
-    <span className="dot"></span>
-    Services
-    <span className="dot"></span>
-    <span className="line"></span>
-  </h2>
-
-  <div className="services-grid">
-    <div className="service-card" data-aos="fade-up" data-aos-delay="100">
-      <h3>Frontend Development</h3>
-      <p>Modern responsive UI using React & JavaScript.</p>
-    </div>
-
-    <div className="service-card" data-aos="fade-up" data-aos-delay="200">
-      <h3>WordPress</h3>
-      <p>Custom themes and business websites.</p>
-    </div>
-
-    <div className="service-card" data-aos="fade-up" data-aos-delay="300">
-      <h3>Shopify</h3>
-      <p>Professional eCommerce store design.</p>
-    </div>
-  </div>
-</section>
-
-        {/* PROJECTS */}
-        <section className="projects-preview">
-  <h2 className="section-title" data-aos="fade-up">
-    <span className="line"></span>
-    <span className="dot"></span>
-    Projects
-    <span className="dot"></span>
-    <span className="line"></span>
-  </h2>
-
-  <div className="projects-grid">
-    <div className="project-card">
-      <h3>Crazy Cones</h3>
-      <p>An e-commerce ice cream store website with smooth animations and product gallery.</p>
-  <a
-    className="project-link"
-    href="https://crazycones.dk/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-    </div>
-    <div className="project-card">
-      <h3>Smile Shift</h3>
-      <p>A moving services company website with clean UI and interactive project sections.</p>
-  <a
-    className="project-link"
-    href="https://smileshiftrelocations.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-    </div>
-    <div className="project-card">
-      <h3>SMMotocross</h3>
-      <p>A motocross event and team website with dynamic content, interactive gallery, and responsive layout.</p>
-  <a
-    className="project-link"
-    href="https://smmotocross.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-    </div>
-    <div className="project-card">
-      <h3>Educatia</h3>
-      <p>An online education platform offering courses and interactive lessons with a user-friendly dashboard.</p>
-  <a
-    className="project-link"
-    href="https://educatia.pk/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-    </div>
-    <div className="project-card">
-      <h3>Eagle Soft</h3>
-      <p>A software solutions company website highlighting services, portfolio, and client testimonials.</p>
-  <a
-    className="project-link"
-    href="https://eagale.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-    </div>
-    <div className="project-card">
-  <h3>Lones Bonsai</h3>
-  <p>
-    A Shopify-based bonsai store featuring a modern design, product collections,
-    secure shopping experience, and a responsive user interface.
-  </p>
-  <a
-    className="project-link"
-    href="https://lonesbonsai.com/"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    View Project
-  </a>
-</div>
-  </div>
-
- 
-</section>
-
-        {/* EXPERIENCE */}
-        <section className="experience">
-  <h2 className="section-title" data-aos="fade-up">
-    <span className="line"></span>
-    <span className="dot"></span>
-    Experience
-    <span className="dot"></span>
-    <span className="line"></span>
-  </h2>
-
-  <div className="experience-grid">
-  {/* Devlogix Learning */}
-  <div className="experience-card" data-aos="fade-up">
-    <h3>HTML, CSS & JavaScript</h3>
-    <span className="experience-company">Devlogix</span>
-    <span className="experience-duration">Learning Period</span>
-    <p>
-      Learned core web development skills, including HTML, CSS, and JavaScript,
-      building responsive and interactive websites.
-    </p>
-  </div>
-
-  {/* Technical Mentors Internship */}
-  <div className="experience-card" data-aos="fade-up" data-aos-delay="100">
-    <h3>WordPress Developer(Job)</h3>
-    <span className="experience-company">Technical Mentors</span>
-    <span className="experience-duration">6 Months</span>
-    <p>
-      Learned WordPress development, theme customization, and plugin integration.
-      Gained hands-on experience with building functional websites.
-    </p>
-  </div>
-
-  {/* Technical Mentors Job */}
-  <div className="experience-card" data-aos="fade-up" data-aos-delay="200">
-    <h3>Frontend Developer</h3>
-    <span className="experience-company">Technical Mentors</span>
-    <span className="experience-duration">1 Year</span>
-    <p>
-      Worked as a WordPress developer, building and maintaining client websites.
-      Improved skills in responsive design, optimization, and project management.
-    </p>
-  </div>
-
-  {/* Eagale Soft Job */}
-  <div className="experience-card" data-aos="fade-up" data-aos-delay="300">
-    <h3>React & Shopify & WordPress Developer</h3>
-    <span className="experience-company">Eagale Soft</span>
-    <span className="experience-duration">1Year – Ongoing</span>
-    <p>
-      Developing modern React applications and Shopify e-commerce stores.
-      Enhancing UI/UX, implementing interactive features, and building scalable web projects.
-    </p>
-  </div>
-</div>
-</section>
-
-
-
-<section id="contact" className="contact-home modern-section">
-  <h2 className="section-title">
-    <span className="line"></span>
-    <span className="dot"></span>
-    Contact Me
-    <span className="dot"></span>
-    <span className="line"></span>
-  </h2>
-
-  <p className="contact-subtext">
-    Have a project in mind or want to work together? Let’s connect.
-  </p>
-
-  <div className="contact-wrapper">
-    
-    {/* LEFT SIDE */}
-    <div className="contact-info">
-      <span className="contact-eyebrow">Available for new opportunities</span>
-      <h3>Let’s talk about your project</h3>
-
-      <p>
-        I’m available for freelance work, collaborations, or full-time opportunities.
-        Feel free to reach out anytime.
-      </p>
-
-      <div className="contact-details">
-        <div className="contact-detail">
-          <span>Email</span>
-          <a href="mailto:kaloomakhtarrr93@gmail.com">kaloomakhtarrr93@gmail.com</a>
-        </div>
-        <div className="contact-detail">
-          <span>Based in</span>
-          <p>Gujranwala, Pakistan</p>
-        </div>
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({behavior:"smooth"});
+  const submit = (event) => { event.preventDefault(); const data = new FormData(event.currentTarget); const message = encodeURIComponent(`Hello Kalsoom!\n\nName: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`); window.open(`https://wa.me/923397112244?text=${message}`, "_blank"); event.currentTarget.reset(); };
+  return <>
+    <section className="hero" id="home">
+      <div className="hero-grid" />
+      <div className="container hero-content">
+        <p className="eyebrow"><span/> Available for freelance work</p>
+        <h1>Creating digital spaces that feel <em>effortless.</em></h1>
+        <p className="hero-copy">Hi, I’m Kalsoom — a frontend developer who brings brands to life through thoughtful interfaces, powerful storefronts, and great user experiences.</p>
+        <div className="hero-buttons"><button className="button button-primary" onClick={() => scrollTo("work")}>Explore my work <FaArrowDown/></button><button className="text-button" onClick={() => scrollTo("contact")}>Let’s work together <FaExternalLinkAlt/></button></div>
+        <div className="hero-meta"><span>Frontend developer</span><span>Gujranwala, Pakistan</span><span>React · Next.js · WordPress · Shopify</span></div>
       </div>
+    </section>
 
-      <a
-        href="https://wa.me/923397112244"
-        target="_blank"
-        className="btn-primary"
-      >
-        Chat on WhatsApp
-      </a>
-    </div>
+    <section className="about-section section container" id="about">
+      <SectionHeading eyebrow="01 / About me" title="A thoughtful partner for your next digital chapter." />
+      <div className="about-layout"><div className="about-copy"><p className="lead">I build clear, confident websites that make it easy for people to connect with your business.</p><p>With over two years of hands-on experience, I blend visual craft with practical development. From a fresh React or Next.js interface to a high-converting Shopify store, I focus on the small details that make a site feel considered.</p><div className="focus-list"><span>Responsive design</span><span>Performance-minded builds</span><span>Clean, maintainable code</span></div><a className="inline-link" href="#contact">Start a conversation <FaExternalLinkAlt/></a></div><div className="about-visual"><img src={techImg} alt="Kalsoom's web development tools"/><div className="mini-card"><FaCode/><span>2+ years<br/><b>building for the web</b></span></div></div></div>
+    </section>
 
-    {/* RIGHT SIDE FORM */}
-   {/* RIGHT SIDE FORM */}
-<form className="contact-form" onSubmit={handleSubmit}>
-  <h3>Send a message</h3>
-  <p>Tell me a little about your project and I’ll get back to you.</p>
-  <label>
-    Your name
-    <input type="text" name="name" placeholder="Enter your name" required />
-  </label>
-  <label>
-    Email address
-    <input type="email" name="email" placeholder="you@example.com" required />
-  </label>
-  <label>
-    Your message
-    <textarea name="message" placeholder="How can I help?" required></textarea>
-  </label>
+    <section className="section skills-section"><div className="container"><SectionHeading eyebrow="02 / Toolkit" title="Tools I use to bring ideas online." /><div className="skills-list">{skills.map(({name,icon}) => <div className="skill-item" key={name}><i>{icon}</i><span>{name}</span></div>)}</div></div></section>
 
-  <button type="submit" className="btn-primary">
-    Send Message
-  </button>
-</form>
+    <section className="section container" id="services"><SectionHeading eyebrow="03 / Services" title="From first thought to final click." copy="I make the web side of your business feel simple, capable, and distinctly yours."/><div className="services-grid">{[["01","Frontend & Next.js","Fast, responsive interfaces and modern Next.js websites built for a smooth experience."],["02","WordPress development","Flexible, easy-to-manage websites built around your team’s needs."],["03","Shopify stores","Purposeful shopping experiences designed to turn browsing into buying."]].map(([no,title,text])=><article className="service-card" key={no}><span>{no}</span><h3>{title}</h3><p>{text}</p><FaExternalLinkAlt/></article>)}</div></section>
 
-  </div>
-</section>
+    <section className="section work-section" id="work"><div className="container"><SectionHeading eyebrow="04 / Selected work" title="A few things I’ve helped bring to life."/><div className="projects-grid">{projects.map(([name,type,text,url],i)=><a className={`project-card project-${i+1}`} href={url} key={name} target="_blank" rel="noreferrer"><div className="project-art"><span>{String(i+1).padStart(2,"0")}</span><b>{name.slice(0,1)}</b></div><div className="project-info"><span>{type}</span><h3>{name}</h3><p>{text}</p><i><FaExternalLinkAlt/></i></div></a>)}</div></div></section>
 
-        {/* CTA */}
-        <section className="cta">
-          <h2>Let's Work Together</h2>
-          <p>Have a project in mind? Let's build it!</p>
-        </section>
-      </div>
-    </>
-  )
+    <section className="section container" id="experience"><SectionHeading eyebrow="05 / Experience" title="Growing through real work."/><div className="timeline">{experience.map(([company,role,time,text])=><article key={company+role}><div className="timeline-date">{time}</div><div><h3>{role}</h3><h4>{company}</h4><p>{text}</p></div></article>)}</div></section>
+
+    <section className="contact-section" id="contact"><div className="container contact-grid"><div><p className="eyebrow"><span/> Have a project in mind?</p><h2>Let’s make something <em>remarkable.</em></h2><p>I’m available for freelance projects, collaborations, and full-time opportunities.</p><a href="https://wa.me/923397112244" target="_blank" rel="noreferrer" className="contact-whatsapp"><FaWhatsapp/> Chat on WhatsApp</a></div><form className="contact-form" onSubmit={submit}><label>Name<input required name="name" placeholder="Your name"/></label><label>Email<input required type="email" name="email" placeholder="you@example.com"/></label><label>Project details<textarea required name="message" placeholder="Tell me a little about what you’re building..."/></label><button className="button button-primary" type="submit">Send message <FaExternalLinkAlt/></button></form></div></section>
+  </>;
 }
-
 export default Home;
