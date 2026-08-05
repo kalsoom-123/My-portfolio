@@ -25,6 +25,7 @@ function App() {
       <a className="whatsapp-btn" href="https://wa.me/923397112244" target="_blank" rel="noreferrer" aria-label="Chat with Kalsoom on WhatsApp">
         <FaWhatsapp />
       </a>
+      
     </>
   );
 }

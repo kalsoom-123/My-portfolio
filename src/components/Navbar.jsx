@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaBars, FaMoon, FaSun, FaTimes } from "react-icons/fa";
 
-const links = ["About", "Services", "Work", "Experience", "Contact"];
+const links = ["About", "Skills", "Services", "Work", "Experience", "Contact"];
 
 function Navbar({ darkMode, setDarkMode }) {
   const [open, setOpen] = useState(false);

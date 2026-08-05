@@ -14,8 +14,28 @@
   padding: 7px 10px;
 }
 
-.skills-list { grid-template-columns: repeat(8, 1fr); }
+.skills-list { grid-template-columns: repeat(7, 1fr); }
+
+.capabilities-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.capability-card{padding:28px 30px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:275px;display:flex;flex-direction:column;align-items:flex-start;transition:background .2s}
+.capability-card:hover{background:var(--card)}
+.capability-card>span{font-family:var(--mono);font-size:11px;color:var(--accent)}
+.capability-card h3{font-size:25px;letter-spacing:-.045em;margin:38px 0 10px}
+.capability-card p{color:var(--muted);line-height:1.65;font-size:14px;max-width:470px;margin:0}
+.capability-card>div{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:22px}
+.capability-card small{border:1px solid var(--line);border-radius:20px;padding:5px 8px;color:var(--muted);font:500 10px var(--mono)}
+
+/* Editorial details */
+.hero:before{content:'KALSOOM / FRONTEND DEVELOPER';position:absolute;right:3.4vw;bottom:8.5vh;z-index:1;writing-mode:vertical-rl;font:10px var(--mono);letter-spacing:.18em;color:var(--muted);opacity:.8}
+.hero-grid{background-size:64px 64px}.hero h1{position:relative;z-index:1}.hero h1:after{content:'';display:inline-block;width:.13em;height:.13em;background:var(--accent);border-radius:50%;margin:0 0 .1em .13em}
+.hero-signature{position:absolute;right:2%;bottom:52px;display:flex;align-items:center;gap:13px;color:var(--ink);z-index:2}.signature-orbit{display:grid;place-items:center;width:61px;height:61px;border:1px solid var(--ink);border-radius:50%;position:relative;font:500 13px var(--serif);font-style:italic}.signature-orbit:before,.signature-orbit:after{content:'';position:absolute;border-radius:50%;border:1px solid var(--accent)}.signature-orbit:before{inset:-6px;border-left-color:transparent;transform:rotate(30deg)}.signature-orbit:after{inset:-11px;border-right-color:transparent;opacity:.55;transform:rotate(-45deg)}.hero-signature strong{display:block;font-size:12px;line-height:1.3;letter-spacing:-.02em}.hero-signature small{display:block;margin-top:7px;font:9px var(--mono);text-transform:uppercase;letter-spacing:.11em;color:var(--muted)}
+.section-heading h2{max-width:760px}.section-heading h2::selection{background:var(--accent);color:#fff}.skills-list{box-shadow:12px 12px 0 color-mix(in srgb,var(--accent) 12%,transparent)}.skill-item{position:relative;overflow:hidden}.skill-item:after{content:'';position:absolute;width:75px;height:75px;border:1px solid currentColor;border-radius:50%;right:-45px;top:-45px;opacity:0;transition:opacity .25s,transform .25s;transform:scale(.5)}.skill-item:hover:after{opacity:.4;transform:scale(1)}
+.capabilities-grid{box-shadow:10px 10px 0 color-mix(in srgb,var(--accent) 10%,transparent)}.capability-card{position:relative;overflow:hidden}.capability-card:after{content:'';position:absolute;right:-15px;bottom:-39px;font:150px var(--serif);color:var(--accent);opacity:.06;line-height:1}.capability-card:nth-child(1):after{content:'01'}.capability-card:nth-child(2):after{content:'02'}.capability-card:nth-child(3):after{content:'03'}.capability-card:nth-child(4):after{content:'04'}.capability-card:nth-child(1){background:color-mix(in srgb,var(--card) 55%,transparent)}.capability-card:nth-child(2){background:color-mix(in srgb,var(--accent) 7%,transparent)}.capability-card:nth-child(3){background:color-mix(in srgb,var(--ink) 3%,transparent)}.capability-card:hover{transform:translateY(-5px);box-shadow:0 14px 24px rgba(21,23,28,.1);z-index:1}
+.service-card{transition:background .25s,transform .25s}.service-card:hover{background:var(--card);transform:translateY(-5px)}.project-art:before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 47%,rgba(255,255,255,.2) 48%,transparent 49%);background-size:22px 22px;opacity:.65}.project-art b{position:relative;transition:transform .3s}.project-card:hover .project-art b{transform:scale(1.08) rotate(-4deg)}.timeline article{position:relative;transition:padding .25s}.timeline article:hover{padding-left:18px}.timeline article:before{content:'';position:absolute;left:0;top:0;width:0;height:1px;background:var(--accent);transition:width .35s}.timeline article:hover:before{width:100%}
 
 @media (max-width: 760px) {
   .skills-list { grid-template-columns: repeat(3, 1fr); }
+  .capabilities-grid{grid-template-columns:1fr}
+  .hero:before,.hero-signature{display:none}
 }
+

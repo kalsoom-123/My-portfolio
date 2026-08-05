@@ -1,28 +1,33 @@
 import { useEffect, useRef } from "react";
 
 export default function Cursor() {
-  const cursorRef = useRef(null);
+  const dotRef = useRef(null);
+  const circleRef = useRef(null);
 
-  const position = useRef({ x: 0, y: 0 });
-  const target = useRef({ x: 0, y: 0 });
+  const mouse = useRef({ x: 0, y: 0 });
+  const circle = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const moveCursor = (e) => {
-      target.current = {
-        x: e.clientX,
-        y: e.clientY,
-      };
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+
+      // Dot follows instantly
+      if (dotRef.current) {
+        dotRef.current.style.left = e.clientX + "px";
+        dotRef.current.style.top = e.clientY + "px";
+      }
     };
 
     window.addEventListener("mousemove", moveCursor);
 
     const animate = () => {
-      position.current.x += (target.current.x - position.current.x) * 0.1;
-      position.current.y += (target.current.y - position.current.y) * 0.1;
+      circle.current.x += (mouse.current.x - circle.current.x) * 0.12;
+      circle.current.y += (mouse.current.y - circle.current.y) * 0.12;
 
-      if (cursorRef.current) {
-        cursorRef.current.style.left = position.current.x + "px";
-        cursorRef.current.style.top = position.current.y + "px";
+      if (circleRef.current) {
+        circleRef.current.style.left = circle.current.x + "px";
+        circleRef.current.style.top = circle.current.y + "px";
       }
 
       requestAnimationFrame(animate);
@@ -30,14 +35,15 @@ export default function Cursor() {
 
     animate();
 
-    return () => window.removeEventListener("mousemove", moveCursor);
+    return () => {
+      window.removeEventListener("mousemove", moveCursor);
+    };
   }, []);
 
   return (
-    <div
-      ref={cursorRef}
-      className="custom-cursor"
-      style={{ left: "0px", top: "0px" }}
-    ></div>
+    <>
+      <div className="cursor-dot" ref={dotRef}></div>
+      <div className="cursor-circle" ref={circleRef}></div>
+    </>
   );
 }
