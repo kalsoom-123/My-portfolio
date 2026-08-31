@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import techImg from "../assets/imgggg.png";
 import { FaArrowDown, FaBootstrap, FaCode, FaCss3Alt, FaExternalLinkAlt, FaGitAlt, FaHtml5, FaNodeJs, FaReact, FaShopify, FaWhatsapp, FaWordpress } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiNextdotjs, SiPrisma, SiTailwindcss, SiVite } from "react-icons/si";
@@ -45,34 +46,39 @@ function Home() {
   };
 
   return <>
-    <section className="hero" id="home">
+    <section className="hero" id="home" data-aos="fade-in" data-aos-delay="50">
       <div className="hero-grid" />
-      <div className="container hero-content">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="container hero-content mx-auto max-w-6xl"
+      >
         <p className="eyebrow"><span /> Available for freelance work</p>
         <h1>Creating digital spaces that feel <em>effortless.</em></h1>
         <p className="hero-copy">Hi, I’m Kalsoom — a frontend developer who brings brands to life through thoughtful interfaces, powerful storefronts, and great user experiences.</p>
         <div className="hero-buttons"><button className="button button-primary" onClick={() => scrollTo("work")}>Explore my work <FaArrowDown /></button><button className="text-button" onClick={() => scrollTo("contact")}>Let’s work together <FaExternalLinkAlt /></button></div>
         <div className="hero-meta"><span>Frontend developer</span><span>Gujranwala, Pakistan</span><span>React · Next.js · WordPress · Shopify</span></div>
-      </div>
-        <div className="hero-signature" aria-label="Developer profile summary"><div className="signature-orbit"><span>KA</span></div><div><strong>Thoughtful design.<br />Practical development.</strong><small>Scroll to explore</small></div></div>
+      </motion.div>
+      <div className="hero-signature" aria-label="Developer profile summary"><div className="signature-orbit"><span>KA</span></div><div><strong>Thoughtful design.<br />Practical development.</strong><small>Scroll to explore</small></div></div>
     </section>
 
-    <section className="about-section section container" id="about">
+    <section className="about-section section container" id="about" data-aos="fade-up">
       <SectionHeading eyebrow="01 / About me" title="A thoughtful partner for your next digital chapter." />
       <div className="about-layout"><div className="about-copy"><p className="lead">I build clear, confident websites that make it easy for people to connect with your business.</p><p>With over two years of hands-on experience, I blend visual craft with practical development. From a fresh React or Next.js interface to a high-converting Shopify store, I focus on the small details that make a site feel considered.</p><div className="focus-list"><span>Responsive design</span><span>Performance-minded builds</span><span>Clean, maintainable code</span></div><a className="inline-link" href="#contact">Start a conversation <FaExternalLinkAlt /></a></div><div className="about-visual"><img src={techImg} alt="Kalsoom's web development tools" /><div className="mini-card"><FaCode /><span>2+ years<br /><b>building for the web</b></span></div></div></div>
     </section>
 
-    <section className="section skills-section"><div className="container"><SectionHeading eyebrow="02 / Toolkit" title="Tools I use to bring ideas online." copy="A practical stack for building responsive websites, interactive products and easy-to-manage digital experiences." /><div className="skills-list">{skills.map(([name, icon]) => <div className="skill-item" key={name}><i>{icon}</i><span>{name}</span></div>)}</div></div></section>
+    <section className="section skills-section" data-aos="fade-up"><div className="container"><SectionHeading eyebrow="02 / Toolkit" title="Tools I use to bring ideas online." copy="A practical stack for building responsive websites, interactive products and easy-to-manage digital experiences." /><div className="skills-list">{skills.map(([name, icon], index) => <div className="skill-item" key={name} data-aos="zoom-in" data-aos-delay={index * 40}><i>{icon}</i><span>{name}</span></div>)}</div></div></section>
 
-    <section className="section container" id="skills"><SectionHeading eyebrow="03 / Capabilities" title="More than a list of technologies." copy="I bring design sensitivity, practical implementation and a steady learning mindset to every project." /><div className="capabilities-grid">{capabilities.map(([title, text, tags], index) => <article className="capability-card" key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><div>{tags.map((tag) => <small key={tag}>{tag}</small>)}</div></article>)}</div></section>
+    <section className="section container" id="skills" data-aos="fade-up"><SectionHeading eyebrow="03 / Capabilities" title="More than a list of technologies." copy="I bring design sensitivity, practical implementation and a steady learning mindset to every project." /><div className="capabilities-grid">{capabilities.map(([title, text, tags], index) => <article className="capability-card" key={title} data-aos="fade-up" data-aos-delay={index * 80}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p><div>{tags.map((tag) => <small key={tag}>{tag}</small>)}</div></article>)}</div></section>
 
-    <section className="section container" id="services"><SectionHeading eyebrow="04 / Services" title="From first thought to final click." copy="I make the web side of your business feel simple, capable, and distinctly yours." /><div className="services-grid">{[["01", "Frontend & Next.js", "Fast, responsive interfaces and modern Next.js websites built for a smooth experience."], ["02", "Business dashboards", "Useful admin and employee portals with CRUD workflows, filters, forms and data-led layouts."], ["03", "WordPress & Shopify", "Easy-to-manage websites and purposeful shopping experiences designed to turn browsing into buying."]].map(([no, title, text]) => <article className="service-card" key={no}><span>{no}</span><h3>{title}</h3><p>{text}</p><FaExternalLinkAlt /></article>)}</div></section>
+    <section className="section container" id="services" data-aos="fade-up"><SectionHeading eyebrow="04 / Services" title="From first thought to final click." copy="I make the web side of your business feel simple, capable, and distinctly yours." /><div className="services-grid">{[["01", "Frontend & Next.js", "Fast, responsive interfaces and modern Next.js websites built for a smooth experience."], ["02", "Business dashboards", "Useful admin and employee portals with CRUD workflows, filters, forms and data-led layouts."], ["03", "WordPress & Shopify", "Easy-to-manage websites and purposeful shopping experiences designed to turn browsing into buying."]].map(([no, title, text]) => <article className="service-card" key={no}><span>{no}</span><h3>{title}</h3><p>{text}</p><FaExternalLinkAlt /></article>)}</div></section>
 
-    <section className="section work-section" id="work"><div className="container"><SectionHeading eyebrow="05 / Selected work" title="A few things I’ve helped bring to life." /><div className="projects-grid">{projects.map(([name, type, text, url], index) => <a className={`project-card project-${index + 1}`} href={url} key={name} target="_blank" rel="noreferrer"><div className="project-art"><span>{String(index + 1).padStart(2, "0")}</span><b>{name.slice(0, 1)}</b></div><div className="project-info"><span>{type}</span><h3>{name}</h3><p>{text}</p><i><FaExternalLinkAlt /></i></div></a>)}</div></div></section>
+    <section className="section work-section" id="work" data-aos="fade-up"><div className="container"><SectionHeading eyebrow="05 / Selected work" title="A few things I’ve helped bring to life." /><div className="projects-grid">{projects.map(([name, type, text, url], index) => <a className={`project-card project-${index + 1}`} href={url} key={name} target="_blank" rel="noreferrer" data-aos="zoom-in-up" data-aos-delay={index * 60}><div className="project-art"><span>{String(index + 1).padStart(2, "0")}</span><b>{name.slice(0, 1)}</b></div><div className="project-info"><span>{type}</span><h3>{name}</h3><p>{text}</p><i><FaExternalLinkAlt /></i></div></a>)}</div></div></section>
 
-    <section className="section container" id="experience"><SectionHeading eyebrow="06 / Experience" title="Growing through real work." /><div className="timeline">{experience.map(([company, role, time, text]) => <article key={company + role}><div className="timeline-date">{time}</div><div><h3>{role}</h3><h4>{company}</h4><p>{text}</p></div></article>)}</div></section>
+    <section className="section container" id="experience" data-aos="fade-up"><SectionHeading eyebrow="06 / Experience" title="Growing through real work." /><div className="timeline">{experience.map(([company, role, time, text], index) => <article key={company + role} data-aos="fade-right" data-aos-delay={index * 70}><div className="timeline-date">{time}</div><div><h3>{role}</h3><h4>{company}</h4><p>{text}</p></div></article>)}</div></section>
 
-    <section className="contact-section" id="contact"><div className="container contact-grid"><div><p className="eyebrow"><span /> Have a project in mind?</p><h2>Let’s make something <em>remarkable.</em></h2><p>I’m available for freelance projects, collaborations, and full-time opportunities.</p><a href="https://wa.me/923397112244" target="_blank" rel="noreferrer" className="contact-whatsapp"><FaWhatsapp /> Chat on WhatsApp</a></div><form className="contact-form" onSubmit={submit}><label>Name<input required name="name" placeholder="Your name" /></label><label>Email<input required type="email" name="email" placeholder="you@example.com" /></label><label>Project details<textarea required name="message" placeholder="Tell me a little about what you’re building..." /></label><button className="button button-primary" type="submit">Send message <FaExternalLinkAlt /></button></form></div></section>
+    <section className="contact-section" id="contact" data-aos="fade-up"><div className="container contact-grid"><div><p className="eyebrow"><span /> Have a project in mind?</p><h2>Let’s make something <em>remarkable.</em></h2><p>I’m available for freelance projects, collaborations, and full-time opportunities.</p><a href="https://wa.me/923397112244" target="_blank" rel="noreferrer" className="contact-whatsapp"><FaWhatsapp /> Chat on WhatsApp</a></div><form className="contact-form" onSubmit={submit}><label>Name<input required name="name" placeholder="Your name" /></label><label>Email<input required type="email" name="email" placeholder="you@example.com" /></label><label>Project details<textarea required name="message" placeholder="Tell me a little about what you’re building..." /></label><button className="button button-primary" type="submit">Send message <FaExternalLinkAlt /></button></form></div></section>
   </>;
 }
 

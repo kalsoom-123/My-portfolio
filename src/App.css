@@ -16,6 +16,55 @@
 
 .skills-list { grid-template-columns: repeat(7, 1fr); }
 
+.section, .about-section, .skills-section, .work-section, .contact-section, .footer {
+  background: transparent;
+  border-color: var(--line);
+}
+
+.contact-section, .footer {
+  backdrop-filter: blur(12px);
+}
+
+.footer,
+.footer p,
+.footer a,
+.footer span,
+.footer .brand-mark {
+  color: var(--muted);
+}
+
+.footer .brand-mark {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+
+body.dark .footer,
+body.dark .footer p,
+body.dark .footer a,
+body.dark .footer span,
+body.dark .footer .brand-mark,
+body.dark .contact-section .eyebrow,
+body.dark .contact-section h2,
+body.dark .contact-section p,
+body.dark .contact-section .contact-whatsapp,
+body.dark .contact-form label,
+body.dark .contact-form input,
+body.dark .contact-form textarea,
+body.dark .contact-form input::placeholder,
+body.dark .contact-form textarea::placeholder {
+  color: #ffffff !important;
+}
+
+body.dark .contact-section .eyebrow span {
+  background: var(--accent);
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  background: rgba(255,255,255,0.02);
+  border-color: rgba(255,255,255,0.16);
+}
+
 .capabilities-grid{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
 .capability-card{padding:28px 30px 30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:275px;display:flex;flex-direction:column;align-items:flex-start;transition:background .2s}
 .capability-card:hover{background:var(--card)}
