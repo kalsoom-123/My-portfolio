@@ -14,18 +14,15 @@ import "./App.css";
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : true;
-  });
   const [showIntro, setShowIntro] = useState(true);
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    document.body.classList.toggle("dark", darkMode);
-    document.body.classList.toggle("light", !darkMode);
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
+    document.body.classList.add("dark");
+    document.body.classList.remove("light");
+    document.documentElement.style.colorScheme = "dark";
+    localStorage.removeItem("darkMode");
+  }, []);
 
   useEffect(() => {
     AOS.init({
@@ -201,7 +198,7 @@ function App() {
       </div>
 
       <div className={`app-shell ${showIntro ? "app-hidden" : "app-visible"}`}>
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Navbar />
         <main><Home /></main>
         <Footer />
         <a className="whatsapp-btn" href="https://wa.me/923397112244" target="_blank" rel="noreferrer" aria-label="Chat with Kalsoom on WhatsApp">
