@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { gsap } from "gsap";
@@ -201,8 +201,8 @@ function App() {
           <Navbar />
         <main><Home /></main>
         <Footer />
-        <a className="whatsapp-btn" href="https://wa.me/923397112244" target="_blank" rel="noreferrer" aria-label="Chat with Kalsoom on WhatsApp">
-          <FaWhatsapp />
+        <a className="whatsapp-btn" href="mailto:kalsoomakhtarrr93@gmail.com" aria-label="Email Kalsoom">
+          <FaEnvelope />
         </a>
       </div>
     </>

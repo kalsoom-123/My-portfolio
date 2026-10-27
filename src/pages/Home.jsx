@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import techImg from "../assets/imgggg.png";
-import { FaArrowDown, FaBootstrap, FaCode, FaCss3Alt, FaExternalLinkAlt, FaGitAlt, FaHtml5, FaNodeJs, FaReact, FaShopify, FaWhatsapp, FaWordpress } from "react-icons/fa";
+import { FaArrowDown, FaBootstrap, FaCode, FaCss3Alt, FaExternalLinkAlt, FaGitAlt, FaHtml5, FaNodeJs, FaReact, FaShopify, FaWordpress } from "react-icons/fa";
 import { SiJavascript, SiMysql, SiNextdotjs, SiPrisma, SiTailwindcss, SiVite } from "react-icons/si";
 
 const skills = [
@@ -40,9 +40,9 @@ function Home() {
   const submit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const message = encodeURIComponent(`Hello Kalsoom!\n\nName: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
-    window.open(`https://wa.me/923397112244?text=${message}`, "_blank");
-    event.currentTarget.reset();
+    const subject = encodeURIComponent(`Portfolio inquiry from ${data.get("name")}`);
+    const body = encodeURIComponent(`Hello Kalsoom!\n\nName: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
+    window.location.href = `mailto:kalsoomakhtarrr93@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return <>
